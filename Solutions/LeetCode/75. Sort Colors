@@ -1,0 +1,45 @@
+P : https://leetcode.com/problems/sort-colors/ 
+
+Approach 1 : Using sorting methos 
+Approach 2 : swap using 3 pointer (low, high, index) 
+Approach3 : using count and override the array  
+
+// approach :  overrideing array by using count
+//TC : O(n)
+public class Solution {
+    public void SortColors(int[] nums) {
+        int zero = 0, one = 0, two =0;
+        
+        for(int i=0; i<nums.Length; i++) {
+            if(nums[i] == 0)zero++;
+            if(nums[i] == 1)one++;
+            if(nums[i] == 2)two++;
+        }
+        
+        for(int i=0; i<nums.Length; i++) nums[i] = 0;
+        for(int i=zero; i<one+zero; i++) nums[i] = 1;
+        for(int i=one+zero; i<nums.Length; i++) nums[i] = 2;
+    }
+}
+
+
+//Approach 2 : swap using 3 pointer (low,high, index) 
+public class Solution {
+    public void SortColors(int[] nums) {
+       int l = 0, h = nums.Length - 1, index = 0;
+        while(index <= h) {
+            if(nums[index] == 0) {
+                nums[index] = nums[l];
+                nums[l] = 0;
+                l++;
+            }
+            if(nums[index] == 2) {
+                nums[index] = nums[h];
+                nums[h] = 2;
+                h--;
+                index--;
+            }
+            index++;
+    }
+}
+}
