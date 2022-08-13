@@ -1,0 +1,21 @@
+
+Approach 1: using set 
+#JS
+
+/**
+ * @param {number[]} a
+ * @param {number} n
+ * @param {number[]} b
+ * @param {number} m
+ * @returns {number}
+*/
+class Solution {
+    //Function to return the count of number of elements in union of two arrays.
+    doUnion(a, n, b, m){
+        // code here
+        let oneArr = [...a, ...b];
+        let count = [... new Set(oneArr)];
+        return count.length;
+    }
+    
+}
