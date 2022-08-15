@@ -1,3 +1,5 @@
+P : https://practice.geeksforgeeks.org/problems/union-of-two-arrays3538/1
+
 
 Approach 1: using set 
 #JS

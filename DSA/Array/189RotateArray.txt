@@ -1,0 +1,59 @@
+P : https://leetcode.com/problems/rotate-array/
+//A1: Brute force TC/SC : O(n)
+
+public class Solution {
+    public void Rotate(int[] nums, int k) {
+        int n = nums.Length;
+        k = k % n;  //to handle constraint
+        int[] ans = new int[n];
+        
+        for(int i = n-k; i<n;i++) ans[i-(n-k)] = nums[i];
+        
+        for(int i = k; i<n; i++) ans[i] = nums[i-k];
+        
+        for(int i=0; i<n; i++) nums[i] = ans[i];
+        
+    }
+}
+
+
+// A2: Optimised - TC: O(n) & SC O(1) 
+public class Solution {
+    public void Rotate(int[] nums, int k) {
+        int n = nums.Length;
+        k = k % n;  //to handle constraint
+        flip(nums, 0, n-1);
+        flip(nums, 0, k-1);
+        flip(nums, k, n-1);
+        
+    }
+    
+    public void flip(int[] arr, int s, int e) {
+        while(s < e) {
+            int temp = arr[s];
+            arr[s] = arr[e];
+            arr[e] = temp;
+            s++;
+            e--;
+        }
+    }
+}
+
+//in JS Optimised - TC: O(n) & SC O(1) 
+
+const revNums = (nums, start, end)=>{
+    while(start < end) {
+        [nums[start], nums[end]] = [nums[end], nums[start]];
+        start++;
+        end--;
+    }
+}
+
+var rotate = function(nums, k) {
+    k = k % nums.length;
+    
+    nums.reverse();
+    revNums(nums, 0, k-1);
+    revNums(nums, k, nums.length - 1);
+
+};
